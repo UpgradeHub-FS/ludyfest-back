@@ -6,3 +6,7 @@ app = FastAPI()
 app.include_router(event_routes.router,
                    prefix="/eventos",
                    tags=["Eventos"])
+
+@app.get("/")
+def root():
+    return {"message": "Servidor funcionando"}
