@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models.user_models import UserLogin
+from models.user_model import UserLogin
 from controllers import auth_controllers
 
 
