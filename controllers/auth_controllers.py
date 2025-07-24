@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 from BBDD.config import get_conexion
-from models.user_models import UserLogin
+from models.user_model import UserLogin
 import aiomysql
 
 
