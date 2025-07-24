@@ -20,7 +20,7 @@ async def login(user_login: UserLogin):
 
             return {
                 "success": True,
-                "message": "Login correcto",
+                "message": "Usuario logueado correctamente",
                 "user": user  # esto es el usuario que sacaste de la BD
                 }
 
