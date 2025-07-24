@@ -18,7 +18,7 @@ async def login(user_login: UserLogin):
                 raise HTTPException(
                     status_code=404, detail='Usuario o password incorrecto')
 
-            return {'Usuario logado correctamente'}
+            return {'msg': 'Usuario logado correctamente'}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error:{str(e)}")
