@@ -1,0 +1,17 @@
+from fastapi import APIRouter
+from controllers import user_controller
+from models.user_model import User, UserCreate
+
+
+
+router = APIRouter()
+
+#Creacion de usuario mediante POST
+@router.post('/register', status_code=201)
+async def user_create(user: UserCreate):
+    return await user_controller.user_create(user)
+
+#Creacion de get_users_list mediante POST
+@router.get('/', status_code=200)
+async def get_all():
+    return await user_controller.get_users_list()
