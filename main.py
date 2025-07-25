@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from routes import event_routes, user_routes, auth_routes
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 #crear la ruta para los eventos
@@ -19,4 +20,10 @@ app.include_router(user_routes.router,
 
 
 
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200/"],  # o [""] para pruebas
+    allow_credentials=True,
+    allow_methods=[""],
+    allow_headers=["*"],
+)
