@@ -21,8 +21,9 @@ app.include_router(user_routes.router,
 #Hago la conexión entre el back y el front
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200"],  # o [""] para pruebas
+    allow_origins=["http://localhost:4200"],  # Solo tu front en desarrollo
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Permite todos los métodos: GET, POST, etc.
+    allow_headers=["*"],  # Permite todos los headers
 )
+

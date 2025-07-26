@@ -6,6 +6,6 @@ from controllers import auth_controllers
 router = APIRouter()
 
 
-@router.post("/login", status_code=200)
+@router.post("/login", status_code=201)
 async def login(user_login: UserLogin):
     return await auth_controllers.login(user_login)
