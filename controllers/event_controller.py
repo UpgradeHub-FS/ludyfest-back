@@ -20,7 +20,7 @@ async def get_event_by_id(event_id: int):
     finally:
         conn.close()
 
-
+#GET para obtener todos los eventos
 async def get_event_list():
     try:
         conn = await get_conexion()
@@ -32,4 +32,5 @@ async def get_event_list():
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
     finally:
             conn.close()
+
     
