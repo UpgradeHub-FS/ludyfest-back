@@ -14,7 +14,7 @@ async def get_event_by_id(event_id: int):
             result = await cursor.fetchone() 
             if not result:
                 raise HTTPException(status_code=404, detail="Evento no encontrado")
-            return Event(result)  
+            return result 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error interno: {str(e)}")
     finally:
