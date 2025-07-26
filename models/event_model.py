@@ -14,5 +14,5 @@ class Event(BaseModel):
     longitude: float
     image: str
     status: int
-    user_id: int
+    users_id: int
     categories_id: int
