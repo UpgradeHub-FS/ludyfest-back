@@ -2,10 +2,12 @@ from fastapi import HTTPException
 from BBDD.config import get_conexion
 from models.user_model import UserCreate, UserLogin
 import aiomysql
+from core.security import hash_password
 
 
 
 
+# Función para logear un usuario
 async def login(user_login: UserLogin):
 
     try:
@@ -31,7 +33,7 @@ async def login(user_login: UserLogin):
         conn.close()
 
 
-#Funcion para crear un usuario
+# Función para crear un usuario
 async def user_create(user: UserCreate):
     try:
         conn = await get_conexion()
@@ -39,7 +41,7 @@ async def user_create(user: UserCreate):
             await cursor.execute("INSERT INTO ludyfest.users (name, email, password, rol) VALUES (%s,%s,%s,%s)", (
                 user.name,
                 user.email,
-                user.password,
+                hash_password(user.password), 
                 user.rol
             ))
             await conn.commit()
