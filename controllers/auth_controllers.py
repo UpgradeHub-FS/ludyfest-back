@@ -2,7 +2,7 @@ from fastapi import HTTPException
 from BBDD.config import get_conexion
 from models.user_model import UserCreate, UserLogin
 import aiomysql
-from core.security import hash_password
+from core.security import hash_password, verify_password
 
 
 
@@ -16,9 +16,9 @@ async def login(user_login: UserLogin):
             await cursor.execute("SELECT * FROM ludyfest.users WHERE email =%s", (user_login.email,))
             user = await cursor.fetchone()
 
-            if not user or user['password'] != user_login.password:
-                raise HTTPException(
-                    status_code=404, detail='Usuario o password incorrecto')
+            # Verificar si el usuario existe y si la contraseña es correcta
+            if not user or not verify_password(user_login.password, user['password']):
+                raise HTTPException(status_code=404, detail='Usuario o password incorrecto')
 
             return {
                 "success": True,
