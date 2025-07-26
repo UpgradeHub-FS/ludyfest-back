@@ -18,7 +18,7 @@ app.include_router(user_routes.router,
                    prefix="/users",
                    tags=["Users"])
 
-
+#Hago la conexión entre el back y el front
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:4200"],  # Solo tu front en desarrollo
