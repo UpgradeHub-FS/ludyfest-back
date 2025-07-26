@@ -10,10 +10,6 @@ router = APIRouter()
 async def get_all():
     return await event_controller.get_event_list()
 
-#http://localhost:8000/events/admin/
-@router.get('/admin', status_code=200)
-async def get_all_admin():
-    return await event_controller.get_event_list_admin()
 
 #http://localhost:8000/events/{event_id}
 @router.get('/{event_id}', status_code=200)
